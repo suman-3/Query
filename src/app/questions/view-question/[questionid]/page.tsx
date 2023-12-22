@@ -31,12 +31,12 @@ async function ViewQuestion({ params }: ViewQuestionProps) {
       <div className="bg-gray-100 p-3">
         <h1 className="text-primary text-lg md:text-xl">{question.title}</h1>
         <div className="flex gap-5 md:gap-10 text-xs mt-2">
-          <span>
-            Asked On{" "}
-            <span className="text-secondary">
-              {dateTimeFormat(question.createdAt)}
-            </span>
-          </span>
+        <span>
+  Asked On{" "}
+  <span className="text-secondary">
+    {dateTimeFormat(new Date(question.createdAt))}
+  </span>
+</span>
 
           <Link href={`/users/${question.user._id}`}>
             Asked By{" "}
