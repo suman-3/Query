@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { IQuestion } from "@/interfaces/index";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 
 interface ProfileTabsProps {
   askedQuestions: IQuestion[];
@@ -42,7 +44,7 @@ function ProfileTabs({
   };
 
   const getQuestion = (question: IQuestion) => (
-    <div className="border p-3 flex flex-col gap-2 bg-gray-50 cursor-pointer hover:border-gray-700">
+    <div className="border p-3 flex flex-col gap-2 bg-gray-50 cursor-pointer hover:border-gray-700 ">
       <h1>{question.title}</h1>
       <span className="text-gray-500 text-sm line-clamp-2">
         {question.description}
@@ -96,47 +98,55 @@ function ProfileTabs({
   );
 
   return (
-    <Tabs
-      color="primary"
-      onSelectionChange={(key) => {
-        router.push(`/profile?tab=${key}`);
-      }}
-    >
-      <Tab title="Questions Asked" key="asked">
-        <div className="flex flex-col gap-5">
-          {askedQuestions.map((question) => (
-            <div key={question._id}>{getQuestion(question)}</div>
-          ))}
+      <Tabs
+        color="primary"
+        onSelectionChange={(key) => {
+          router.push(`/profile?tab=${key}`);
+        }}
+        classNames={{
+          tabList: "gap-1",
+          tab: "rounded-md",
+        }}
+      >
+        <Tab title="Asked" key="asked">
+          <div className="flex flex-col gap-5">
+            {askedQuestions.map((question) => (
+              <div key={question._id}>{getQuestion(question)}</div>
+            ))}
 
-          {askedQuestions.length === 0 && getEmptyMessage()}
-        </div>
-      </Tab>
-      <Tab title="Questions Answered" key="answered">
-        <div className="flex flex-col gap-5">
-          {answeredQuestions.map((question) => (
-            <div key={question._id}>{getQuestion(question)}</div>
-          ))}
-        </div>
-        {answeredQuestions.length === 0 && getEmptyMessage()}
-      </Tab>
-      <Tab title="Questions Saved" key="saved">
-        <div className="flex flex-col gap-5">
-          {savedQuestions.map((question) => (
-            <div key={question._id}>{getQuestion(question)}</div>
-          ))}
-        </div>
-        {savedQuestions.length === 0 && getEmptyMessage()}
-      </Tab>
+            {askedQuestions.length === 0 && getEmptyMessage()}
+          </div>
+        </Tab>
+        <Tab title="Answered" key="answered">
+          <div className="flex flex-col gap-5">
+            {answeredQuestions.map((question) => (
+              <div key={question._id}>{getQuestion(question)}</div>
+            ))}
+          </div>
+          {answeredQuestions.length === 0 && getEmptyMessage()}
+        </Tab>
+        <Tab title={
+          <FontAwesomeIcon icon={faFloppyDisk} />
+          
+        } 
+        key="saved">
+          <div className="flex flex-col gap-5">
+            {savedQuestions.map((question) => (
+              <div key={question._id}>{getQuestion(question)}</div>
+            ))}
+          </div>
+          {savedQuestions.length === 0 && getEmptyMessage()}
+        </Tab>
 
-      <Tab title="Questions Commented" key="commented">
-        <div className="flex flex-col gap-5">
-          {commentedQuestions.map((question) => (
-            <div key={question._id}>{getQuestion(question)}</div>
-          ))}
-        </div>
-        {commentedQuestions.length === 0 && getEmptyMessage()}
-      </Tab>
-    </Tabs>
+        <Tab title="Commented" key="commented">
+          <div className="flex flex-col gap-5">
+            {commentedQuestions.map((question) => (
+              <div key={question._id}>{getQuestion(question)}</div>
+            ))}
+          </div>
+          {commentedQuestions.length === 0 && getEmptyMessage()}
+        </Tab>
+      </Tabs>
   );
 }
 
