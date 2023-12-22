@@ -27,7 +27,7 @@ function QuestionCard({ question }: { question: IQuestion }) {
           <span>
             Asked On{" "}
             <span className="text-secondary">
-              {dateTimeFormat(question.updatedAt)}
+              {dateTimeFormat(question.createdAt)}
             </span>
           </span>
 
