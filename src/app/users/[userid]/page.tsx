@@ -21,7 +21,7 @@ async function userInfo({ params }: userInfoProps) {
   });
   return (
     <div>
-      <div className="bg-gray-100 p-5 flex gap-5 items-center">
+      <div className="bg-gray-100 p-3 flex gap-5 items-center">
         <Image
           src={userData?.profilePicUrl!}
           height={70}
