@@ -15,9 +15,10 @@ export function dateTimeFormat(date: string | Date): string {
     year: "numeric",
     month: "long",
     day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true, // Use 12-hour clock format
+    // hour: "numeric",
+    // minute: "numeric",
+    // hour12: true,
+     // Use 12-hour clock format
   };
 
   // Check if the input is a string or a Date object
