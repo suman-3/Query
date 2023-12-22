@@ -9,6 +9,8 @@ import axios from "axios";
 import AnswerForm from "./AnswerForm";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCommentDots } from "@fortawesome/free-solid-svg-icons/faCommentDots";
 
 function AnswerCard({
   answer,
@@ -61,7 +63,7 @@ function AnswerCard({
     }
   };
 
-  const deleteComment = async (id:string) => {
+  const deleteComment = async (id: string) => {
     try {
       setLoadingForDeletingComment(true);
       await axios.delete(`/api/comments/${id}`);
@@ -92,7 +94,7 @@ function AnswerCard({
 
       {answer.code && <ViewCode code={answer.code} />}
 
-      <div className="flex justify-between items-center mt-5">
+      <div className="flex justify-between items-center mt-5 ">
         {!showComments ? (
           <Button
             isLoading={loading}
@@ -102,7 +104,8 @@ function AnswerCard({
             }}
             size="sm"
           >
-            View Comments
+            <FontAwesomeIcon className="text-[16px]" icon={faCommentDots} />
+            View
           </Button>
         ) : (
           <Button
@@ -110,11 +113,12 @@ function AnswerCard({
             onClick={() => setShowComments(false)}
             size="sm"
           >
-            Hide Comments
+            <FontAwesomeIcon className="text-[16px]" icon={faCommentDots} />
+            Hide
           </Button>
         )}
 
-        <div className="flex gap-5">
+        <div className="ml-2 flex gap-2">
           {mongoUserId === answer.user._id && (
             <>
               <Button
@@ -172,7 +176,10 @@ function AnswerCard({
                         size="sm"
                         color="primary"
                         variant="flat"
-                        isLoading={loadingForDeletingComment && selectedComment?._id === comment._id}
+                        isLoading={
+                          loadingForDeletingComment &&
+                          selectedComment?._id === comment._id
+                        }
                       >
                         Delete
                       </Button>

@@ -79,12 +79,12 @@ function AnswerForm({
             {type === "add" ? "Add" : "Edit"} Answer
           </h1>
           <Textarea
-            placeholder="Description"
+            placeholder="Write here..."
             value={answer.description}
             onChange={(e) =>
               setAnswer({ ...answer, description: e.target.value })
             }
-            label="Description"
+            label="Answer"
             labelPlacement="outside"
           />
           <Switch
