@@ -51,12 +51,12 @@ function QuestionInfoFooter({
 
   return (
     <div>
-      <div className="flex gap-3 items-center">
+      <div className="flex gap-1 items-center">
         <span className="text-sm">
           {question.totalAnswers > 0 ? question.totalAnswers : "No"} Answers
         </span>
 
-        <div className="flex gap-2">
+        <div className="flex gap-1">
           {question.savedBy.includes(mongoDbUserId) && (
             <Button
               size="sm"
