@@ -151,7 +151,7 @@ function AnswerCard({
             color="primary"
             variant="flat"
           >
-            Add Comment
+            Add<FontAwesomeIcon className="text-[16px]" icon={faCommentDots} />
           </Button>
         </div>
       </div>
