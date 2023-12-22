@@ -34,9 +34,10 @@ async function ViewQuestion({ params }: ViewQuestionProps) {
         <span>
   Asked On{" "}
   <span className="text-secondary">
-    {dateTimeFormat(new Date(question.createdAt))}
+    {dateTimeFormat(question.createdAt)}
   </span>
 </span>
+
 
           <Link href={`/users/${question.user._id}`}>
             Asked By{" "}
@@ -63,7 +64,6 @@ async function ViewQuestion({ params }: ViewQuestionProps) {
         <p className="text-sm text-gray-600">{question.description}</p>
 
         {question.code && <ViewCode code={question.code} />}
-
 
         <QuestionInfoFooter
           question={JSON.parse(JSON.stringify(question))}
